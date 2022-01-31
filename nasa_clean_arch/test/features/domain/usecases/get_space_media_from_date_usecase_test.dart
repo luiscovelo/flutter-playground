@@ -10,12 +10,12 @@ import 'package:nasa_clean_arch/features/domain/usecases/get_space_media_from_da
 class MockSpaceMediaRepository extends Mock implements ISpaceMediaRepository {}
 
 void main() {
-  late GetSpaceMediaUsecaseFromDate usecase;
+  late GetSpaceMediaUsecaseFromDateUsecase usecase;
   late ISpaceMediaRepository repository;
 
   setUp(() {
     repository = MockSpaceMediaRepository();
-    usecase = GetSpaceMediaUsecaseFromDate(repository);
+    usecase = GetSpaceMediaUsecaseFromDateUsecase(repository);
   });
 
   const tSpaceMedia = SpaceMediaEntity(
@@ -44,5 +44,12 @@ void main() {
 
     final result = await usecase(tDate);
     expect(result, Left(ServerFailure()));
+  });
+
+  test('should return a NullParamFailure when receivers a null param',
+      () async {
+    final result = await usecase(null);
+    expect(result, Left(NullParamFailure()));
+    verifyNever(() => repository.getSpaceMediaFromDate(tDate));
   });
 }
