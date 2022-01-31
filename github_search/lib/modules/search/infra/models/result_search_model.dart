@@ -13,9 +13,9 @@ class ResultSearchModel extends ResultSearch {
 
   factory ResultSearchModel.fromJson(Map<String, dynamic> json) =>
       ResultSearchModel(
-        title: json['title'],
-        img: json['img'],
-        content: json['content'],
+        title: json['login'],
+        img: json['avatar_url'],
+        content: json['node_id'],
       );
 
   Map<String, dynamic> toJson() => {
