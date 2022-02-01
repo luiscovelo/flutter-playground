@@ -47,4 +47,20 @@ void main() {
 
     bloc.add("luiscovelo");
   });
+
+  test(
+      'deve executar os estados na ordem correta no caso de fornecer um termo vazio',
+      () {
+    when(() => usecase(any())).thenAnswer(
+      (_) async => const Right(<ResultSearch>[]),
+    );
+
+    expectLater(
+        bloc.stream,
+        emitsInOrder([
+          isA<SearchEmptyTerm>(),
+        ]));
+
+    bloc.add("");
+  });
 }

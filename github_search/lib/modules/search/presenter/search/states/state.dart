@@ -13,3 +13,5 @@ class SearchError implements SearchState {}
 class SearchLoading implements SearchState {}
 
 class SearchStart implements SearchState {}
+
+class SearchEmptyTerm implements SearchState {}

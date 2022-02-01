@@ -14,12 +14,16 @@ class SearchBloc extends Bloc<String, SearchState> {
   }
 
   void _search(String event, Emitter<SearchState> emit) async {
-    emit(SearchLoading());
-    final result = await usecase.call(event);
-    result.fold(
-      (error) => emit(SearchError()),
-      (success) => emit(SearchSuccess(success)),
-    );
+    if (event.isNotEmpty) {
+      emit(SearchLoading());
+      final result = await usecase.call(event);
+      result.fold(
+        (error) => emit(SearchError()),
+        (success) => emit(SearchSuccess(success)),
+      );
+    } else {
+      emit(SearchEmptyTerm());
+    }
   }
 
   EventTransformer<String> transform<String>(Duration duration) {
