@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:github_search/localization/localization_controller.dart';
 import 'package:github_search/modules/search/presenter/search/search_bloc.dart';
 import 'package:github_search/modules/search/presenter/search/widgets/custom_button_widget.dart';
 import 'package:github_search/modules/search/presenter/search/widgets/custom_text_field_widget.dart';
 import 'package:google_fonts/google_fonts.dart';
+// ignore: implementation_imports
+import 'package:localization/src/localization_extension.dart';
 
 class CustomAppBarWidget extends StatelessWidget
     implements PreferredSizeWidget {
@@ -10,13 +14,16 @@ class CustomAppBarWidget extends StatelessWidget
   final TextEditingController inputController;
   final Size size;
   final double heightStatusBar;
-  const CustomAppBarWidget({
+  CustomAppBarWidget({
     Key? key,
     required this.bloc,
     required this.inputController,
     required this.size,
     required this.heightStatusBar,
   }) : super(key: key);
+
+  final LocalizationController localizationController =
+      Modular.get<LocalizationController>();
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +48,7 @@ class CustomAppBarWidget extends StatelessWidget
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Search',
+                'appbar-title'.i18n(),
                 style: GoogleFonts.poppins(
                   color: Colors.white,
                   fontSize: 26,
@@ -53,16 +60,16 @@ class CustomAppBarWidget extends StatelessWidget
               ),
               RichText(
                 text: TextSpan(
-                  text: "for users at ",
+                  text: 'appbar-subtitle'.i18n() + ' ',
                   style: GoogleFonts.poppins(
                     color: Colors.white,
                     fontSize: 22,
                     fontWeight: FontWeight.w400,
                   ),
-                  children: const [
+                  children: [
                     TextSpan(
-                      text: "Github",
-                      style: TextStyle(
+                      text: 'appbar-subtitle-repo'.i18n(),
+                      style: const TextStyle(
                         color: Color(0xFF306F75),
                       ),
                     ),

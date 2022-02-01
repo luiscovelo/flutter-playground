@@ -1,0 +1,9 @@
+{
+    "appbar-title": "Encontre",
+    "appbar-subtitle": "usuários no",
+    "appbar-subtitle-repo": "Github",
+    "input-label-text": "Busque pelo nome de usuário",
+    "error-text": "Ocorreu um problema",
+    "empty-text": "Tente buscar um usuário, exemplo: %s",
+    "search-result-text": "Resultado da busca"
+}

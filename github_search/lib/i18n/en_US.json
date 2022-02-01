@@ -1,0 +1,9 @@
+{
+    "appbar-title": "Search",
+    "appbar-subtitle": "for users at",
+    "appbar-subtitle-repo": "Github",
+    "input-label-text": "Filter by username",
+    "error-text": "Something went wrong",
+    "empty-text": "Try filtering a user, example: %s",
+    "search-result-text": "Search result"
+}

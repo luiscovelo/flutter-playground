@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:github_search/localization/localization_controller.dart';
 import 'package:github_search/modules/search/presenter/search/search_bloc.dart';
 import 'package:github_search/modules/search/presenter/search/states/state.dart';
 import 'package:google_fonts/google_fonts.dart';
+// ignore: implementation_imports
+import 'package:localization/src/localization_extension.dart';
 
 class CustomListviewWidget extends StatelessWidget {
   final SearchBloc bloc;
@@ -19,7 +23,7 @@ class CustomListviewWidget extends StatelessWidget {
               return Padding(
                 padding: const EdgeInsets.only(top: 26, bottom: 26, left: 26),
                 child: Text(
-                  'Search result',
+                  'search-result-text'.i18n(),
                   style: GoogleFonts.poppins(
                     color: const Color(0xFF0D1844),
                     fontSize: 26,
@@ -42,16 +46,16 @@ class CustomListviewWidget extends StatelessWidget {
                   final state = bloc.state;
 
                   if (state is SearchStart || state is SearchEmptyTerm) {
-                    return const Center(
+                    return Center(
                       child: Text(
-                        'Try filtering a user, example: luiscovelo',
+                        'empty-text'.i18n(['luiscovelo']),
                       ),
                     );
                   }
 
                   if (state is SearchError) {
-                    return const Center(
-                      child: Text('Something went wrong...'),
+                    return Center(
+                      child: Text('error-text'.i18n()),
                     );
                   }
 

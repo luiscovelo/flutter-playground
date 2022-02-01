@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+// ignore: implementation_imports
+import 'package:localization/src/localization_extension.dart';
 
 class CustomTextFieldWidget extends StatelessWidget {
   final TextEditingController controller;
@@ -29,9 +31,9 @@ class CustomTextFieldWidget extends StatelessWidget {
           border: const OutlineInputBorder(
             borderSide: BorderSide.none,
           ),
-          hintText: "Filter by username...",
+          hintText: 'input-label-text'.i18n() + '...',
           hintStyle: GoogleFonts.poppins(
-            fontSize: 18,
+            fontSize: 14,
             color: Colors.grey[400],
           ),
         ),
